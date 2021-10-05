@@ -1,0 +1,5 @@
+andrei의 첨언
+1. loading(),completing()이라는 이름만 봐서는 무슨 함수인지 잘 이해 할 수 없다. 이름을 showLoadingSpinner(), removeLoadingSpinner()로 바꾸면 어떤지.
+2. quoteText.textContent 대신에 quoteText.innerText를 사용할 수 있다.
+3. getQuotes()라는 함수안에서 catch문 안에 또 getQuotes()를 선언했다. 이런 함수를 recursive 함수라고 하는데, 만약 함수 자체가 에러를 내면 끝없는 에러가 이어져서 시스템이 다운된다. 
+    이럴때는 콘솔 창도 계속 지저분해 진다. 그리고 infinite loop에 빠지게 된다.그래서 좋은 생각은 10번 정도 한다음에 계속 에러가 나면 멈추도록 하는 시스템을 추가하면 좋을 것이다. 
