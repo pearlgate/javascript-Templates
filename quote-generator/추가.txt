@@ -1,3 +1,50 @@
+같은 프로젝트에 대해서 api호출시 생길 수 있는 두가지 문제에 대해서 언급하기로 한다. 
+이를 설명하기 위해서 script2.js를 만들었다. 
+이전 강의에서 사용하였던 api가 아닌 다른 사이트의 api를 사용하여 보겠다. 
+forismatic.com/en/api/ 에 있는 http://api.forismatic.com/api/1.0/에 method와language와 format을 파라메터로 던져서 data를 가져온다. 
+method=getQuote
+lang=en
+format=json
+
+async function getQuote(){
+    const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
+    try{
+        const response = await fetch(apiUrl);
+        const quote = await response.json();
+        console.log(guote)
+    }catch(error){
+        console.log('whoops, no quote', error);
+    }
+    
+}
+
+// On Load
+getQuote();
+
+코드를 실행해보면 Access to fetch at 'https://api.forismatic.com/api/1.0/?m 127.0.0.1/:1ethod=getQuote&lang=en&format=json' (redirected from 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json') 
+from origin 'http://127.0.0.1:5500' has been blocked by CORS policy:No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+라는 에러가 뜬다. 이것은 fetch를 요청했을때 block되었다는 것이다. 가끔 무료 api를 이용할때 이런 에러가 생기기도 한다.
+이럴때는  코드를 다음과 같이 고친다. 여기서는 누구나 사용할 수 있는 proxyUrl을 적었으나 나중 비디오에서 자신만의 proxy server를 만들어 보겠다. 
+
+async function getQuote(){
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+    const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
+    try{
+        const response = await fetch(proxyUrl+apiUrl);
+        const data = await response.json();
+        console.log(data);
+    }catch(error){
+        console.log('whoops, no quote',error);
+    }
+}
+
+// On Load
+getQuote();
+
+이렇게 하니까 이전 에러는 없어졌는데, 나의 경우는 unexpected token S라고 하면서 403 에러가 떴다. 그런데 강의자는 unexpected token'라는 에러가 떠서 해법을 알려주기를 catch()안에 getQuotes()를 넣으라는 것이다.
+그리고 그것은 성공을 했다. 
+또 한가지, 429 에러는 free proxy api를 사용하는 경우 너도 나도 사용해서 기다리는 것보다는 에러를 내뱉을때 나오는 숫자이다. 
+
 andrei의 첨언
 1. loading(),completing()이라는 이름만 봐서는 무슨 함수인지 잘 이해 할 수 없다. 이름을 showLoadingSpinner(), removeLoadingSpinner()로 바꾸면 어떤지.
 2. quoteText.textContent 대신에 quoteText.innerText를 사용할 수 있다.
