@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:wght@100;200&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #fdfcff;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm20 0a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM10 37a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm10-17h20v20H20V20zm10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14z' fill='%23c9c90a' fill-opacity='0.18' fill-rule='evenodd'/%3E%3C/svg%3E");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Lilita One", cursive;
+}
+
+.word-container {
+  width: auto;
+  max-width: 900px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+.word-text {
+  font-size: 2.75rem;
+  padding: 50px 40px;
+  text-align: center;
+}
+
+.word-verse {
+  font-size: 1.8rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.btn-container {
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 15px;
+  background-color: rgba(80, 161, 111, 0.9);
+  border: none;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0.3rem rgba(11, 78, 45, 0.76);
+}
+
+.new-word-btn:hover {
+  color: white;
+  background-color: rgb(6, 129, 78);
+}
+
+.new-word-btn:active {
+  transform: translate(0, 0.3rem);
+  box-shadow: 0 0.1rem rgba(255, 255, 255, 0.76);
+  color: white;
+  background-color: rgb(6, 129, 78);
+}
+
+.twitter-btn:hover {
+  color: cyan;
+  background-color: rgb(6, 129, 78);
+}
+
+.twitter-btn:active {
+  transform: translate(0, 0.3rem);
+  box-shadow: 0 0.1rem rgba(255, 255, 255, 0.76);
+  color: rgb(5, 247, 255);
+  background-color: rgb(6, 129, 78);
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid rgb(6, 129, 78); /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .word-container {
+    margin: auto 10px;
+  }
+  .word-text {
+    font-size: 2.5rem;
+  }
+}
